@@ -40,7 +40,7 @@ void setup()
     led4.selectGPIO(18,0,0);
     //
     //configure pin switch
-    switch1.selectGPIO(19,1,0);
+    switch1.selectGPIOinput(19);
     switch2.selectGPIO(21,1,0);
     switch3.selectGPIO(22,1,0);
     switch4.selectGPIO(23,1,0);
@@ -53,6 +53,7 @@ void loop()
 
     if(ta == 1)
     {
+        cout << "switch abierto" << endl;
         led1.stateHIGH(4);
     }
    // cout << "activo led 1" << endl;

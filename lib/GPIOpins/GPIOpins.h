@@ -35,10 +35,16 @@ class GPIOPin
 
   public:
     void selectGPIO(int selectedGPIO, int IO, int state);
+    void selectGPIOinput(int selectinput);
     void stateHIGH(int Hpin);
     void stateLOW(int Lpin);
     int QueryPin(int pin);
 };
+//
+void GPIOPin::selectGPIOinput(int selectinput)
+{
+  pinMode(selectinput, INPUT);
+}
 //
 void GPIOPin::selectGPIO(int selectedGPIO, int IO, int state)
 {
@@ -72,11 +78,12 @@ void GPIOPin::stateLOW(int Lpin)
 //
 int GPIOPin::QueryPin(int pin)
 {
-  if(pin == LOW)
+  int valor = digitalRead(pin);
+  if(valor == LOW)
   {
     return 1;
   }
-  else if(pin == HIGH)
+  else if(valor == HIGH)
   {
     return 0;
   }
