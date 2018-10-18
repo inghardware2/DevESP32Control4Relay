@@ -37,6 +37,7 @@ class GPIOPin
     void selectGPIO(int selectedGPIO, int IO, int state);
     void stateHIGH(int Hpin);
     void stateLOW(int Lpin);
+    int QueryPin(int pin);
 };
 //
 void GPIOPin::selectGPIO(int selectedGPIO, int IO, int state)
@@ -67,4 +68,16 @@ void GPIOPin::stateHIGH(int Hpin)
 void GPIOPin::stateLOW(int Lpin)
 {
   digitalWrite(Lpin, LOW);
+}
+//
+int GPIOPin::QueryPin(int pin)
+{
+  if(pin == LOW)
+  {
+    return 1;
+  }
+  else if(pin == HIGH)
+  {
+    return 0;
+  }
 }
