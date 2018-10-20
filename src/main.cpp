@@ -49,7 +49,7 @@ void loop()
 {
     if (IsSwitch2Push == false && IsSwitch3Push == false && IsSwitch4Push == false)
     {
-        int t1 = valveSwitch.readPin(22);
+        int t1 = valveSwitch.readPin(19);
         if (t1 == HIGH)
         {
             counterSwitch1++;
@@ -75,7 +75,7 @@ void loop()
     }
     if (IsSwitch1Push == false && IsSwitch3Push == false && IsSwitch4Push == false)
     {
-        int t2 = valveSwitch.readPin(23);
+        int t2 = valveSwitch.readPin(21);
         if (t2 == HIGH)
         {
             counterSwitch2++;
@@ -84,39 +84,13 @@ void loop()
             case 1:
                 IsSwitch2Push = true;
                 cout << "Initialization of cicle; valve Enabled" << endl;
-                ledIndicator.stateHIGH(15);
+                ledIndicator.stateHIGH(5);
                 valveRelay.stateON(2);
                 delay(1000);
                 break;
             case 2:
                 counterSwitch2 = 0;
                 IsSwitch2Push = false;
-                cout << "Finalization of cicle; valve Disabled" << endl;
-                ledIndicator.stateLOW(15);
-                valveRelay.stateOFF(2);
-                delay(1000);
-                break;
-            }
-        }
-    }
-    if (IsSwitch1Push == false && IsSwitch2Push == false && IsSwitch4Push == false)
-    {
-        int t3 = valveSwitch.readPin(19);
-        if (t3 == HIGH)
-        {
-            counterSwitch3++;
-            switch (counterSwitch3)
-            {
-            case 1:
-                IsSwitch3Push = true;
-                cout << "Initialization of cicle; valve Enabled" << endl;
-                ledIndicator.stateHIGH(5);
-                valveRelay.stateON(2);
-                delay(1000);
-                break;
-            case 2:
-                counterSwitch3 = 0;
-                IsSwitch3Push = false;
                 cout << "Finalization of cicle; valve Disabled" << endl;
                 ledIndicator.stateLOW(5);
                 valveRelay.stateOFF(2);
@@ -125,9 +99,35 @@ void loop()
             }
         }
     }
+    if (IsSwitch1Push == false && IsSwitch2Push == false && IsSwitch4Push == false)
+    {
+        int t3 = valveSwitch.readPin(22);
+        if (t3 == HIGH)
+        {
+            counterSwitch3++;
+            switch (counterSwitch3)
+            {
+            case 1:
+                IsSwitch3Push = true;
+                cout << "Initialization of cicle; valve Enabled" << endl;
+                ledIndicator.stateHIGH(15);
+                valveRelay.stateON(2);
+                delay(1000);
+                break;
+            case 2:
+                counterSwitch3 = 0;
+                IsSwitch3Push = false;
+                cout << "Finalization of cicle; valve Disabled" << endl;
+                ledIndicator.stateLOW(15);
+                valveRelay.stateOFF(2);
+                delay(1000);
+                break;
+            }
+        }
+    }
     if (IsSwitch1Push == false && IsSwitch2Push == false && IsSwitch3Push == false)
     {
-        int t4 = valveSwitch.readPin(21);
+        int t4 = valveSwitch.readPin(23);
         if (t4 == HIGH)
         {
             counterSwitch4++;
